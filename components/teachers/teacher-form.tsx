@@ -68,7 +68,7 @@ export default function TeacherForm({ initial, onSubmit, onCancel }: TeacherForm
             type="email"
             value={form.email}
             onChange={(e) => setForm({ ...form, email: e.target.value })}
-            placeholder="teacher@school.com"
+            placeholder="teacher@college.com"
           />
         </div>
         <div>
@@ -86,7 +86,7 @@ export default function TeacherForm({ initial, onSubmit, onCancel }: TeacherForm
             id="subject_specialization"
             value={form.subject_specialization}
             onChange={(e) => setForm({ ...form, subject_specialization: e.target.value })}
-            placeholder="e.g., Mathematics, Science"
+            placeholder="e.g., Computer Science, Engineering"
           />
         </div>
         <div>

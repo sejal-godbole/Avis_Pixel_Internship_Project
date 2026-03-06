@@ -1,3 +1,4 @@
+  // ...existing clientReady state and useEffect...
 "use client"
 
 import { useMemo, useState, useEffect, useCallback } from "react"
@@ -30,6 +31,9 @@ export default function AttendancePage() {
     const endIndex = Math.min(startIndex + studentsPerClass, students.length)
     return students.slice(startIndex, endIndex)
   }, [students, classes, selectedClassId])
+
+  const [clientReady, setClientReady] = useState(false);
+  useEffect(() => { setClientReady(true); }, []);
 
   const existingAttendance = useMemo(() => {
     return attendance.filter((a) => a.date === selectedDate && a.class_id === selectedClassId)
@@ -110,7 +114,7 @@ export default function AttendancePage() {
             <Users className="h-4 w-4 text-teal-600" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-gray-900">{classStudents.length}</div>
+            <div className="text-2xl font-bold text-gray-900">{clientReady ? classStudents.length : null}</div>
             <p className="text-xs text-gray-500 mt-1">In selected class</p>
           </CardContent>
         </Card>
@@ -121,7 +125,7 @@ export default function AttendancePage() {
             <TrendingUp className="h-4 w-4 text-blue-600" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-gray-900">{attendanceStats.attendanceRate}%</div>
+            <div className="text-2xl font-bold text-gray-900">{clientReady ? attendanceStats.attendanceRate : null}%</div>
             <p className="text-xs text-gray-500 mt-1">Overall class average</p>
           </CardContent>
         </Card>
@@ -132,7 +136,7 @@ export default function AttendancePage() {
             <Calendar className="h-4 w-4 text-emerald-600" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-gray-900">{attendanceStats.totalRecords}</div>
+            <div className="text-2xl font-bold text-gray-900">{clientReady ? attendanceStats.totalRecords : null}</div>
             <p className="text-xs text-gray-500 mt-1">Attendance entries</p>
           </CardContent>
         </Card>
@@ -151,7 +155,7 @@ export default function AttendancePage() {
               <label className="text-sm font-medium text-gray-700">Select Class</label>
               <Select value={selectedClassId} onValueChange={setSelectedClassId}>
                 <SelectTrigger>
-                  <SelectValue placeholder="Choose a class" />
+                  <SelectValue placeholder={"Choose a class"} />
                 </SelectTrigger>
                 <SelectContent>
                   {classes.map((cls) => (

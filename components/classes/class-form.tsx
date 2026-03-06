@@ -121,7 +121,7 @@ export default function ClassForm({ initial, onSubmit, onCancel }: ClassFormProp
           />
         </div>
         <div className="md:col-span-2">
-          <Label>Subjects</Label>
+          <Label>College Subjects</Label>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-2 mt-2 p-3 border rounded-md bg-gray-50">
             {subjects.map((subject) => (
               <div key={subject.id} className="flex items-center space-x-2">

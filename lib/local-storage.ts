@@ -92,7 +92,7 @@ export const auth = {
       role === "admin"
         ? "admin@school.com"
         : role === "teacher"
-        ? "teacher@school.com"
+        ? "teacher@college.com"
         : "student@school.com"
 
     const user: User = {

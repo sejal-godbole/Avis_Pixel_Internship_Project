@@ -4,11 +4,14 @@ import { Button } from "@/components/ui/button"
 import { useRouter } from "next/navigation"
 import { useToast } from "@/hooks/use-toast"
 import { Bell, Search, User } from "lucide-react"
+import { useEffect, useState } from "react"
 
 export default function Topbar() {
   const router = useRouter()
   const { toast } = useToast()
   const user = auth.getUser()
+  const [clientReady, setClientReady] = useState(false);
+  useEffect(() => { setClientReady(true); }, []);
 
   const signOut = async () => {
     const { error } = await auth.signOut()
@@ -38,7 +41,9 @@ export default function Topbar() {
               <div className="w-8 h-8 bg-blue-900 rounded-full flex items-center justify-center">
                 <User className="h-4 w-4 text-blue-400" />
               </div>
-              <span className="text-sm font-medium text-blue-300">{user?.email || "admin@school.com"}</span>
+                {clientReady && (
+                  <span className="text-sm font-medium text-blue-300">{user?.email || "admin@school.com"}</span>
+                )}
             </div>
             <Button
               onClick={signOut}
