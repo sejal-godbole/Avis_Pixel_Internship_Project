@@ -47,7 +47,7 @@ export default function LoginPage() {
       <Card className="w-full max-w-md">
         <CardHeader>
           <CardTitle className="text-balance">{mode === "signin" ? "Sign in" : "Create account"}</CardTitle>
-          <CardDescription>School Management System</CardDescription>
+          <CardDescription>Avis Pixel ERP</CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="flex flex-col gap-4">

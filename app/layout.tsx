@@ -7,9 +7,9 @@ const geistSans = Geist({ subsets: ["latin"], display: "swap", variable: "--font
 const geistMono = Geist_Mono({ subsets: ["latin"], display: "swap", variable: "--font-geist-mono" })
 
 export const metadata: Metadata = {
-  title: "SMS App",
+  title: "Avis Pixel",
   description: "Made with stackpro",
-  generator: "Sms.app",
+  generator: "AvisPixel.app",
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

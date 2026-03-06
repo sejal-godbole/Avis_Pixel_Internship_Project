@@ -78,7 +78,8 @@ export default function ClassForm({ initial, onSubmit, onCancel }: ClassFormProp
             value={form.name}
             onChange={(e) => setForm({ ...form, name: e.target.value })}
             required
-            placeholder="e.g., Grade 10-A"
+            placeholder="FY/SY/TY/Btech"
+            className="border-blue-500 focus:border-blue-700 focus:ring-blue-500"
           />
         </div>
         <div>

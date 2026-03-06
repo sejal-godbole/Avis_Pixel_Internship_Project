@@ -28,7 +28,7 @@ export default function ClassesPage() {
       <div className="flex items-center justify-between">
         <h1 className="text-2xl md:text-3xl font-semibold">Classes</h1>
         <Button
-          className="bg-teal-600 hover:bg-teal-700 text-white"
+          className="bg-blue-600 hover:bg-blue-700 text-white"
           onClick={() => {
             setEdit(null)
             setOpen(true)
@@ -39,9 +39,9 @@ export default function ClassesPage() {
       </div>
 
       <Card>
-        <CardHeader className="flex flex-row items-center justify-between">
-          <CardTitle className="text-lg">All Classes ({classes.length})</CardTitle>
-          <Input placeholder="Search..." value={q} onChange={(e) => setQ(e.target.value)} className="max-w-xs" />
+        <CardHeader className="flex flex-row items-center justify-between border-b border-blue-200">
+          <CardTitle className="text-lg text-blue-700">All Classes ({classes.length})</CardTitle>
+          <Input placeholder="Search..." value={q} onChange={(e) => setQ(e.target.value)} className="max-w-xs focus:border-blue-500" />
         </CardHeader>
         <CardContent>
           <div className="overflow-x-auto">
@@ -66,7 +66,7 @@ export default function ClassesPage() {
                       .join(", ") || "-"
                   return (
                     <TableRow key={c.id}>
-                      <TableCell className="font-medium">{c.name}</TableCell>
+                      <TableCell className="font-medium text-blue-700">{c.name}</TableCell>
                       <TableCell>{teacher?.full_name || "-"}</TableCell>
                       <TableCell>{c.room_number || "-"}</TableCell>
                       <TableCell>{c.capacity || "-"}</TableCell>
@@ -76,6 +76,7 @@ export default function ClassesPage() {
                           <Button
                             variant="outline"
                             size="icon"
+                            className="border-blue-600 text-blue-600 hover:bg-blue-50"
                             onClick={() => {
                               setEdit(c)
                               setOpen(true)

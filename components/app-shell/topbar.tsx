@@ -21,30 +21,30 @@ export default function Topbar() {
   }
 
   return (
-    <header className="border-b border-gray-200 bg-white shadow-sm">
+    <header className="border-b border-gray-800 bg-black shadow-sm">
       <div className="px-6 py-4 flex items-center justify-between">
         <div className="flex items-center gap-4">
-          <h1 className="text-xl font-semibold text-gray-900">Welcome back, {user?.name || "Admin"}</h1>
+          <h1 className="text-xl font-semibold text-blue-400">Welcome back, {user?.name || "Admin"}</h1>
         </div>
         <div className="flex items-center gap-3">
-          <Button variant="ghost" size="sm" className="text-gray-600 hover:text-gray-900">
+          <Button variant="ghost" size="sm" className="text-blue-300 hover:text-blue-400">
             <Search className="h-4 w-4" />
           </Button>
-          <Button variant="ghost" size="sm" className="text-gray-600 hover:text-gray-900">
+          <Button variant="ghost" size="sm" className="text-blue-300 hover:text-blue-400">
             <Bell className="h-4 w-4" />
           </Button>
-          <div className="flex items-center gap-3 pl-3 border-l border-gray-200">
+          <div className="flex items-center gap-3 pl-3 border-l border-gray-800">
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-teal-100 rounded-full flex items-center justify-center">
-                <User className="h-4 w-4 text-teal-600" />
+              <div className="w-8 h-8 bg-blue-900 rounded-full flex items-center justify-center">
+                <User className="h-4 w-4 text-blue-400" />
               </div>
-              <span className="text-sm font-medium text-gray-700">{user?.email || "admin@school.com"}</span>
+              <span className="text-sm font-medium text-blue-300">{user?.email || "admin@school.com"}</span>
             </div>
             <Button
               onClick={signOut}
               variant="outline"
               size="sm"
-              className="text-gray-600 hover:text-gray-900 bg-transparent"
+              className="text-blue-300 hover:text-blue-400 bg-transparent border-blue-400"
             >
               Sign out
             </Button>

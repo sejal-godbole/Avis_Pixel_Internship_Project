@@ -1,4 +1,4 @@
-// Core types for the School Management System
+// Core types for the Avis Pixel ERP
 
 export type ID = string
 
