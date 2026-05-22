@@ -16,6 +16,17 @@ const safeStorage = {
   },
 }
 
+// Emit change events so components can react to mutations in the pseudo-DB
+const emitChange = (key: string) => {
+  if (!isBrowser) return
+  try {
+    const ev = new CustomEvent('avis-db-change', { detail: { key } })
+    window.dispatchEvent(ev)
+  } catch (e) {
+    // ignore
+  }
+}
+
 // ================= TYPES =================
 
 export type Student = {
@@ -125,6 +136,7 @@ const createCollection = (key: string) => ({
     }
     items.push(newItem)
     safeStorage.set(key, JSON.stringify(items))
+    emitChange(key)
     return newItem
   },
 
@@ -135,6 +147,7 @@ const createCollection = (key: string) => ({
 
     items[index] = { ...items[index], ...updates }
     safeStorage.set(key, JSON.stringify(items))
+    emitChange(key)
     return items[index]
   },
 
@@ -142,6 +155,7 @@ const createCollection = (key: string) => ({
     const items = createCollection(key).getAll()
     const filtered = items.filter((i: any) => i.id !== id)
     safeStorage.set(key, JSON.stringify(filtered))
+    emitChange(key)
     return true
   },
 })

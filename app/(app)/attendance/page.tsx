@@ -13,9 +13,23 @@ import { toast } from "@/hooks/use-toast"
 import { Calendar, Users, TrendingUp } from "lucide-react"
 
 export default function AttendancePage() {
-  const classes = db.classes.getAll()
-  const students = db.students.getAll()
-  const attendance = db.attendance.getAll()
+  const [classes, setClasses] = useState(() => db.classes.getAll())
+  const [students, setStudents] = useState(() => db.students.getAll())
+  const [attendance, setAttendance] = useState(() => db.attendance.getAll())
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+    const handler = (e: any) => {
+      const key = e?.detail?.key
+      if (!key || ['classes', 'students', 'attendance'].includes(key)) {
+        setClasses(db.classes.getAll())
+        setStudents(db.students.getAll())
+        setAttendance(db.attendance.getAll())
+      }
+    }
+    window.addEventListener('avis-db-change', handler)
+    return () => window.removeEventListener('avis-db-change', handler)
+  }, [])
 
   const [selectedClassId, setSelectedClassId] = useState<string>(classes[0]?.id || "")
   const [selectedDate, setSelectedDate] = useState<string>(new Date().toISOString().slice(0, 10))
